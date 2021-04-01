@@ -6,7 +6,7 @@ import { getConfig } from "../config";
 import Loading from "../components/Loading";
 
 export const ExternalApiComponent = () => {
-  const { apiOrigin = "http://localhost:3001", audience } = getConfig();
+  const { apiOrigin = "https://auth0-pizza42-api-dwaynehbrown.vercel.app", audience } = getConfig();
 
   const [state, setState] = useState({
     showResult: false,

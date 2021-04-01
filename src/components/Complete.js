@@ -7,7 +7,6 @@ import { render } from "react-dom";
 import Loading from "./Loading";
 import Button from "reactstrap/lib/Button";
 import axios from 'axios';
-import jwt_decode from "jwt-decode";
 
 const Order = () => {
     const {
@@ -31,17 +30,15 @@ const Order = () => {
                 scope: 'order:order'
             });
 
-            var decoded = jwt_decode(token);
 
-            console.log('got token ', token);
-
-            axios.get('https://auth0-pizza42-api-dwaynehbrown.vercel.app/api/order', {
+            axios.post('http://localhost:3002/api/order', {}, {
+                // axios.post('https://auth0-pizza42-api-dwaynehbrown.vercel.app/api/order', {}, {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }
-            })
+            } )
                 .then(resp => {
-                    console.log('order ', resp);
+  
 
                     (async () => {
                         const token = await getAccessTokenSilently({
@@ -50,14 +47,14 @@ const Order = () => {
                             
                         });
 
-                        axios.post('https://auth0-pizza42-api-dwaynehbrown.vercel.app/api/updateUser', {
-                            user_metadata: {
+                        axios.post('http://localhost:3002/api/updateUser', {
+                            // axios.post('https://auth0-pizza42-api-dwaynehbrown.vercel.app/api/updateUser', {
 
                                 order_history: [
-
+                                    ...((!!user && typeof user['https://pizza42order_history'] !== 'undefined') ? user['https://pizza42order_history'] : []),
                                     { ...resp.data.order }
                                 ]
-                            }
+                            
                         }, {
                             headers: {
                                 Authorization: `Bearer ${token}`

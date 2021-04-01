@@ -26,6 +26,7 @@ const Order = (props) => {
             
             loginWithRedirect({
                 redirectUri: 'http://localhost:3000/complete',
+                // redirectUri: 'https://build-dwaynehbrown.vercel.app/complete',
                 audience: 'pizza-42-express',
                 scope: 'order:order update:account'
             })
@@ -76,7 +77,6 @@ const Order = (props) => {
                     Order Now
                 </Button>}
                 {user && !user.email_verified && <Button
-                    onClick={onPlaceOrder}
                     disabled
                 >
                     Please verify your email before continuing
