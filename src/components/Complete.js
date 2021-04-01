@@ -35,7 +35,7 @@ const Order = () => {
 
             console.log('got token ', token);
 
-            axios.get('http://localhost:3001/api/order', {
+            axios.get('https://auth0-pizza42-api-dwaynehbrown.vercel.app/api/order', {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }
@@ -50,7 +50,7 @@ const Order = () => {
                             
                         });
 
-                        axios.post('http://localhost:3001/api/updateUser', {
+                        axios.post('https://auth0-pizza42-api-dwaynehbrown.vercel.app/api/updateUser', {
                             user_metadata: {
 
                                 order_history: [
