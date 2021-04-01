@@ -31,8 +31,8 @@ const Order = () => {
             });
 
 
-            axios.post('http://localhost:3002/api/order', {}, {
-                // axios.post('https://auth0-pizza42-api-dwaynehbrown.vercel.app/api/order', {}, {
+            // axios.post('http://localhost:3002/api/order', {}, {
+                axios.post('https://auth0-pizza42-api-dwaynehbrown.vercel.app/api/order', {}, {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }
@@ -47,8 +47,8 @@ const Order = () => {
                             
                         });
 
-                        axios.post('http://localhost:3002/api/updateUser', {
-                            // axios.post('https://auth0-pizza42-api-dwaynehbrown.vercel.app/api/updateUser', {
+                        // axios.post('http://localhost:3002/api/updateUser', {
+                            axios.post('https://auth0-pizza42-api-dwaynehbrown.vercel.app/api/updateUser', {
 
                                 order_history: [
                                     ...((!!user && typeof user['https://pizza42order_history'] !== 'undefined') ? user['https://pizza42order_history'] : []),
@@ -60,6 +60,9 @@ const Order = () => {
                                 Authorization: `Bearer ${token}`
                             }
                         })
+                            .then (resp => {
+                                alert ('order complete');
+                            })
                     })()
 
                 })

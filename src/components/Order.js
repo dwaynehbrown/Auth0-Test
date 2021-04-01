@@ -25,8 +25,8 @@ const Order = (props) => {
         async () => {
             
             loginWithRedirect({
-                redirectUri: 'http://localhost:3000/complete',
-                // redirectUri: 'https://build-dwaynehbrown.vercel.app/complete',
+                // redirectUri: 'http://localhost:3000/complete',
+                redirectUri: 'https://build-dwaynehbrown.vercel.app/complete',
                 audience: 'pizza-42-express',
                 scope: 'order:order update:account'
             })
